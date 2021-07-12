@@ -26,6 +26,8 @@ template: |
 replacers:
   - search: '/^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\([\w-]*\))*:(\s)*/g'
     replace: '$3'
+  - search: 'feat'
+    replace: 'feature'
 autolabeler:
   - label: 'configuration'
     files:
