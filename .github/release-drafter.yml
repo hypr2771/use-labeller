@@ -21,10 +21,9 @@ exclude-labels:
   - 'security'
 change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
 template: |
-  ## Changes
   $CHANGES
 replacers:
-  - search: '/^(.+):\s*(.*)/g'
+  - search: '/(.+):\s*(.*)/g'
     replace: '$2'
 autolabeler:
   - label: 'configuration'
