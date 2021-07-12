@@ -1,0 +1,48 @@
+name-template: 'v$NEXT_MINOR_VERSION'
+tag-template: 'v$MAJOR.$MINOR'
+prerelease: true
+categories:
+  - title: '🚀 Features'
+    labels:
+      - 'enhancement'
+  - title: '🐛 Bug Fixes'
+    labels:
+      - 'bug'
+  - title: '🧰 Meta'
+    labels:
+      - 'configuration'
+      - 'ci'
+      - 'documentation'
+  - title: '🏭 Libraries update'
+    label: 'dependencies'
+exclude-labels:
+  - 'skip-changelog'
+  - 'security'
+change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
+template: |
+  ## Changes
+  $CHANGES
+replacers:
+  - search: '/^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\([\w-]*\))*:\s*/g'
+    replace: ''
+autolabeler:
+  - label: 'configuration'
+    files:
+      - '.*\\.(config|editorconfig|properties|sql)+$'
+    title:
+      - '/^(style|refactor|perf|test|chore)(\([\w-]*\))*:\s*.*/i'
+  - label: 'security'
+    title:
+      - '/^(build\(security\)):\s*.*/i'
+  - label: 'ci'
+    files:
+      - '.*(workflows|github).*\.yml$'
+    title:
+      - '/^(build|ci)(\([\w-]*\))*:\s*.*/i'
+  - label: 'bug'
+    title:
+      - '/^(fix|revert)(\([\w-]*\))*:\s*.*/i'
+  - label: 'enhancement'
+    title:
+      - '/^(feat)(\([\w-]*\))*:\s*.+/i'
+
