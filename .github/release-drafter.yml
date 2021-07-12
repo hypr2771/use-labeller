@@ -24,8 +24,8 @@ template: |
   ## Changes
   $CHANGES
 replacers:
-  - search: '/feat: (.*)/g'
-    replace: '$1'
+  - search: '/^(feat):\s*(.*)/g'
+    replace: '$2'
   - search: 'feat'
     replace: 'feature'
 autolabeler:
